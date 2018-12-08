@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta name="viewport" content="width=820">
+	<title>JavaScript Vote v6m</title>
+
+	<style type="text/css">
+body{font-size:100%;background-color:#d6edbd}p#no_javascript{background:#fff5bc;font-size:1.4em;padding:.5em}span#warning{font-weight:bold}canvas{border-color:black;border-style:solid;border-width:2px}div{display:inline-block}div#canvas_div{width:640px}div#spacer_div{width:1em}#newButton{font-size:150%;width:100px;height:50px}code#fps{font-family:sans-serif;font-size:300%;font-weight:bold}code#max_fps{font-family:sans-serif;font-size:300%;font-weight:bold}
+	</style>
+
+</head>
+
+<body id="main-body" >
+
+<noscript>
+	<p id="no_javascript">
+		<span id="warning">Warning:</span> This site will not work properly with JavaScript disabled.
+	</p>
+</noscript>
+
+<div id="canvas_div">
+	<canvas id="canvas" width='640' height='480'  title="click to stop/go" >
+		Sorry! - Browser does not support Graphics Canvas
+	</canvas>
+</div>
+
+<div id="spacer_div">
+	<p>
+</div>
+
+<div id="new_fps_div">
+	<input id="newButton" type="button"  value="New">
+	<br />
+	<code> &nbsp; FPS</code>
+	<code id="fps"> 0 </code>
+	<br />
+	<code> &nbsp; max</code>
+	<code id="max_fps">0</code>
+	<br />
+</div>
+
+<script type="text/javascript">
+function V(){var E,L,H,b=256,u,l=new Array(b),g=document.getElementById("canvas"),a=document.getElementById("newButton");var d=g.width,G=g.height,m=10,A=d/m,v=G/m,n=A-1,k=v-1,y=false,s=0,x=0,B=0,f=false,t=new Array(b),u=new Array(),E=g.getContext("2d");for(i=0;i<A;i++){u[i]=new Array();for(j=0;j<v;j++){u[i][j]=0}}p=setInterval;q=clearInterval;J();g.onclick=function(){c()};a.onclick=function(){J()};function J(){y=false;B=0;var M;q(L);q(H);s=0;document.getElementById("fps").innerHTML=s;x=0;document.getElementById("max_fps").innerHTML=x;g.style.borderColor="black";a.style.backgroundColor="white";K();for(i=0;i<A;i++){for(j=0;j<v;j++){M=l[Math.floor(Math.random()*b)];u[i][j]=M}}z();L=p(h,0);H=p(I,1000);f=true}function D(){f=true;L=p(h,0);H=p(I,1000)}function h(){++B;for(i=0;i<A;i++){for(j=0;j<v;j++){F(i,j)}}e()}function F(Q,M){var P,R,O;var N;P=Q;R=M;N=Math.floor(Math.random()*8);switch(N){case 0:if(Q==0){P=A}if(M==0){R=v}u[Q][M]=u[(P-1)][(R-1)];break;case 1:if(Q==0){P=A}u[Q][M]=u[(P-1)][R];break;case 2:if(Q==0){P=A}if(M==k){R=-1}u[Q][M]=u[(P-1)][(R+1)];break;case 3:if(M==k){R=-1}u[Q][M]=u[P][(R+1)];break;case 4:if(Q==n){P=-1}if(M==k){R=-1}u[Q][M]=u[(P+1)][(R+1)];break;case 5:if(Q==n){P=-1}u[Q][M]=u[(P+1)][R];break;case 6:if(Q==n){P=-1}if(M==0){R=v}u[Q][M]=u[(P+1)][(R-1)];break;case 7:if(M==0){R=v}u[Q][M]=u[P][(R-1)];break;default:break}}function e(){for(i=0;i<A;i++){for(j=0;j<v;j++){E.fillStyle=u[i][j];E.fillRect(i*m,j*m,m,m)}}var M=u[0][0];y=true;for(i=0;i<A;i++){for(j=0;j<v;j++){if(u[i][j]!=M){y=false;break}}}s=s+1;if(y==true){a.style.backgroundColor="lightblue";g.style.borderColor="white";C();r("iterations: "+B)}}function z(){for(i=0;i<A;i++){for(j=0;j<v;j++){E.fillStyle=u[i][j];E.fillRect(i*m,j*m,m,m)}}}function K(){for(i=0;i<b;i++){l[i]="rgb("+Math.floor(Math.random()*b)+","+Math.floor(Math.random()*b)+","+Math.floor(Math.random()*b)+")"}}function o(){for(i=0;i<A;i++){for(j=0;j<v;j++){E.fillStyle="rgb("+Math.floor(Math.random()*b)+","+Math.floor(Math.random()*b)+","+Math.floor(Math.random()*b)+")";E.fillRect(i*m,j*m,m,m)}}}function w(){if(y==false){if(f==false){s=0;h()}}}function c(){if(y==false){if(f==true){C()}else{D()}}}function C(){f=false;q(L);s=0;I();q(H)}function I(){document.getElementById("fps").innerHTML=s;if(s>x){x=s;document.getElementById("max_fps").innerHTML=x}s=0}function r(){if(typeof console=="undefined"){return}console.log.apply(console,arguments)}};
+	V();
+</script>
+
+</body>
+
+</html>
